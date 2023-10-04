@@ -38,6 +38,7 @@ export const utilsDatos = async (element, categoryId, vtexCookie, specs) => {
         // 5. Reemplazar espacios por guiones
         // 6. Agregar '/' adelante del slug
         let slug = element.name
+        console.log(slug)
         slug = slug.replaceAll('$', 'dollar')
         slug = slug.replaceAll('ñ', 'n')
         slug = slug.replace(/[^a-zA-Z0-9 ]/g, '')
