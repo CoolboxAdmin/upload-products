@@ -37,13 +37,13 @@ export const utilsDatos = async (element, categoryId, vtexCookie, specs) => {
         // 4. Convertir todo el texto a letras minúsculas
         // 5. Reemplazar espacios por guiones
         // 6. Agregar '/' adelante del slug
-        let slug = element.name
+        let slug = await element.name
         console.log(slug)
-        slug = slug.replaceAll('$', 'dollar')
-        slug = slug.replaceAll('ñ', 'n')
-        slug = slug.replace(/[^a-zA-Z0-9 ]/g, '')
-        slug = slug.toLowerCase()
-        slug = slug.replaceAll(' ', '-')
+        slug = await slug.replaceAll('$', 'dollar')
+        slug = await slug.replaceAll('ñ', 'n')
+        slug = await slug.replace(/[^a-zA-Z0-9 ]/g, '')
+        slug = await slug.toLowerCase()
+        slug = await slug.replaceAll(' ', '-')
         slug = '/' + slug
         // IMÁGENES: Lógica para obtener url de imágenes automáticamente según la cantidad de imágenes otogada en el XLS
         let listImages = []
@@ -98,7 +98,7 @@ export const utilsDatos = async (element, categoryId, vtexCookie, specs) => {
             productToCreate,
             { headers: HeaderSeller }
         )
-        const productId = createProductResponse.data.id
+        const productId = await createProductResponse.data.id
         // DESCRIPCIÓN: Actualizar descripción del producto creado
         const updateDescriptionResponse = await axios.put(
             `https://${element.origin}.myvtex.com/api/catalog-seller-portal/products/${productId}/description`,
