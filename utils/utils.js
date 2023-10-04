@@ -38,7 +38,6 @@ export const utilsDatos = async (element, categoryId, vtexCookie, specs) => {
         // 5. Reemplazar espacios por guiones
         // 6. Agregar '/' adelante del slug
         let slug = await element.name
-        console.log(slug)
         slug = await slug.replace(/$/g, 'dollar')
         slug = await slug.replace(/ñ/g, 'n')
         slug = await slug.replace(/[^a-zA-Z0-9 ]/g, '')
@@ -93,6 +92,7 @@ export const utilsDatos = async (element, categoryId, vtexCookie, specs) => {
             ],
             "origin": element.origin
         }
+        console.log(productToCreate)
         const createProductResponse = await axios.post(
             `https://${element.origin}.myvtex.com/api/catalog-seller-portal/products`,
             productToCreate,
