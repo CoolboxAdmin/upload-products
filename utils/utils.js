@@ -39,11 +39,11 @@ export const utilsDatos = async (element, categoryId, vtexCookie, specs) => {
         // 6. Agregar '/' adelante del slug
         let slug = await element.name
         console.log(slug)
-        slug = await slug.replaceAll('$', 'dollar')
-        slug = await slug.replaceAll('ñ', 'n')
+        slug = await slug.replaceAll(/$/g, 'dollar')
+        slug = await slug.replaceAll(/ñ/g, 'n')
         slug = await slug.replace(/[^a-zA-Z0-9 ]/g, '')
         slug = await slug.toLowerCase()
-        slug = await slug.replaceAll(' ', '-')
+        slug = await slug.replaceAll(/ /g, '-')
         slug = '/' + slug
         // IMÁGENES: Lógica para obtener url de imágenes automáticamente según la cantidad de imágenes otogada en el XLS
         let listImages = []
